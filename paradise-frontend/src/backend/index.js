@@ -9,7 +9,8 @@ export const API = axios.create({
   },
 });
 
-export default function setSession(token) {
+
+export function setSession(token) {
   if (token) {
     localStorage.setItem('jwt_access_token', token);
     API.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -17,4 +18,8 @@ export default function setSession(token) {
     localStorage.removeItem('jwt_access_token');
     delete API.defaults.headers.common.Authorization;
   }
+}
+
+export function logout() {
+  this.setSession(null);
 }

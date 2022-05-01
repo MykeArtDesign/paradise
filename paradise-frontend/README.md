@@ -1,6 +1,6 @@
-# paradise-front
+# paradise-frontend
 
-> A vue.js front-end app for a Ruby on rails API app
+> A vue.js project
 
 ## Build Setup
 

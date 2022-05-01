@@ -1,17 +1,23 @@
 <template>
   <div id="app">
-    <h1>Le nom des destinations</h1>
+    <navbar/>
     <router-view/>
   </div>
 </template>
 
 <script>
+
 import Home from '@/components/Home';
+import Navbar from './components/Navbar';
+import Signin from './components/Signin';
+
 
 export default {
   name: 'App',
   components: {
     Home,
+    Navbar,
+    Signin,
   },
 };
 </script>
