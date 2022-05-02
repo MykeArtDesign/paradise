@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="pt-100">
     <form action="">
       <div>
         <label for="name" id="name">Nom de la destination</label>
@@ -70,3 +70,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+  .pt-100 {
+    padding-top: 100px;
+  }
+</style>

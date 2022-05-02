@@ -8,8 +8,16 @@ module Api
 
       def index
         @destinations = Destination.all
-
         render json: @destinations
+
+        # the `geocoded` scope filters only flats with coordinates (latitude & longitude)
+        @markers = @destinations.geocoded.map do |flat|
+          {
+            lat: flat.latitude,
+            lng: flat.longitude
+          }
+        end
+        render json: @markers
       end
 
       def show
