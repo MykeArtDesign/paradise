@@ -8,8 +8,10 @@
 
         <div class="navigation-bar">
                 <ul>
-                  <li><a href="#">Toutes les destinations </a></li>
-                  <li><router-link to="/signin">Se connecter</router-link></li>
+                  <li><router-link to="/signin" v-if="!login()">Sign in</router-link></li>
+                  <!-- <li><router-link to="/signin">Se connecter</router-link></li> -->
+                  <li><router-link to="/" @click.prevent="logout" v-if="!login()">Se deconnecter</router-link></li>
+                  <!-- <li><a href="#" @click.prevent="logout" v-if="login()">Sign out</a></li> -->
                 </ul>
         </div>
       </nav>
@@ -18,9 +20,27 @@
 </template>
 
 <script>
+import { API, signOut } from '../backend/index';
 
 export default {
   name: 'Navbar',
+
+  created() {
+    this.login();
+  },
+
+  methods: {
+    login() {
+      return localStorage.login;
+    },
+    logout() {
+      API.delete('/sigin')
+        .then(() => {
+          localStorage.clear();
+          this.$router.replace('/');
+        });
+    },
+  },
 };
 </script>
 

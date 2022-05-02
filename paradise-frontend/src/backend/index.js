@@ -13,13 +13,13 @@ export const API = axios.create({
 export function setSession(token) {
   if (token) {
     localStorage.setItem('jwt_access_token', token);
-    API.defaults.headers.common.Authorization = `Bearer ${token}`;
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
   } else {
     localStorage.removeItem('jwt_access_token');
-    delete API.defaults.headers.common.Authorization;
+    delete axios.defaults.headers.common.Authorization;
   }
 }
 
-export function logout() {
-  this.setSession(null);
+export function signOut() {
+  setSession(null);
 }

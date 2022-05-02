@@ -19,7 +19,7 @@
 
 <script>
 
-import { API } from '../backend/index';
+import { API, setSession } from '../backend/index';
 
 export default {
   name: 'Destination',
@@ -39,10 +39,10 @@ export default {
           password: this.input.password,
         })
           .then((response) => {
-            this.setSession(response.data);
-            this.$router.push('/');
+            setSession(response.data.access);
+            this.$router.replace('/');
           })
-          .catch(error => this.console.log(error));
+          .catch(error => console.log(error));
       }
       return null;
     },
