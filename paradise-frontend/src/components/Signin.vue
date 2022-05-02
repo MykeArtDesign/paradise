@@ -18,6 +18,7 @@
 </template>
 
 <script>
+
 import { API } from '../backend/index';
 
 export default {
@@ -32,22 +33,20 @@ export default {
   },
   methods: {
     login() {
-      if (this.email !== '' && this.password !== '') {
-        API.post('/signin', {
-          email: this.input.email,
-          password: this.input.password,
+      API.post('/signin', {
+        email: this.input.email,
+        password: this.input.password,
+      })
+        .then((response) => {
+          this.setSession(response.data);
+          this.$router.push('/');
         })
-          .then((response) => {
-            this.setSession(response.data);
-            this.$router.replace('/newdestination');
-          })
-          .catch(error => this.console.log(error));
-      }
-      return null;
+        .catch(error => this.console.log(error));
     },
   },
 };
-</script>
+</script >
+
 <style scoped>
  .pt-100 {
    padding-top: 100px;
