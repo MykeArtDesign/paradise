@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import { API, signOut } from '../backend/index';
+import { API } from '../backend/index';
 
 export default {
   name: 'Navbar',

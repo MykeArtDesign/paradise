@@ -1,40 +1,40 @@
 <template>
   <section class="pt-100">
-    <form action="">
+    <form action="" @summit.prevent="addNewDestination">
       <div>
         <label for="name" id="name">Nom de la destination</label>
         <input
-          placeholder="Paris, Barcelone"
-          v-model="newDestination.name" type="text" id="name">
+          v-model="destination.name" type="text" id="name">
       </div>
       <div>
         <label for="address" id="adress">Adresse de la destination</label>
         <input
-          v-model="newDestination.address" type="text" id="address">
+          v-model="destination.address" type="text" id="address">
       </div>
       <div>
         <label for="description" id="description">Ajouter une description</label>
         <input
           placeholder="ajouter du texte..."
-          v-model="newDestination.description" type="text" id="description">
+          v-model="destination.description" type="text" id="description">
       </div>
       <div>
         <label for="rate" id="rate">Ajouter une note (/5)</label>
         <input
-          v-model="newDestination.rate" type="range" id="range">
+          v-model="destination.rate" type="number" id="rate">
       </div>
       <div>
         <label for="image" id="image">Ajouter une photo (url)</label>
         <input
-          v-model="newDestination.photo_url" type="text" id="image">
+          v-model="destination.photo_url" type="text" id="image">
       </div>
 
-      <button v-on:click="addNewDestination" type="submit">Ajouter </button>
+      <button type="submit">Ajouter </button>
     </form>
   </section>
 </template>
 
 <script>
+
 import { API } from '../backend/index';
 
 export default {
@@ -51,6 +51,7 @@ export default {
     };
   },
   methods: {
+
     addNewDestination() {
       API.post('/api/v1/destinations/', {
         destinations: {
@@ -62,11 +63,10 @@ export default {
         },
       })
         .then((response) => {
-          this.destinations.push(response.data);
-          this.newDestination = '';
-        })
-        .catch(error => this.console.log(error));
+          this.destinations = response.data;
+        });
     },
+
   },
 };
 </script>

@@ -21,7 +21,7 @@ module Api
       end
 
       def show
-        render json: destination
+        render json: @destination
       end
 
       def create
