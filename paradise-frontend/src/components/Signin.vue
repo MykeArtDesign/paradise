@@ -33,15 +33,18 @@ export default {
   },
   methods: {
     login() {
-      API.post('/signin', {
-        email: this.input.email,
-        password: this.input.password,
-      })
-        .then((response) => {
-          this.setSession(response.data);
-          this.$router.push('/');
+      if (this.input.email !== '' && this.input.password !== '') {
+        API.post('/signin', {
+          email: this.input.email,
+          password: this.input.password,
         })
-        .catch(error => this.console.log(error));
+          .then((response) => {
+            this.setSession(response.data);
+            this.$router.push('/');
+          })
+          .catch(error => this.console.log(error));
+      }
+      return null;
     },
   },
 };
