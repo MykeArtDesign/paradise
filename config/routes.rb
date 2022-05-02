@@ -7,4 +7,8 @@ Rails.application.routes.draw do
   end
 
   root to: 'home#index'
+  post :signin, to: 'signin#create'
+  delete :signin, to: 'signin#destroy'
+  post :refresh, to: 'refresh#create'
+  resources :users, only: [:create]
 end

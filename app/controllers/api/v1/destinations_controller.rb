@@ -3,27 +3,42 @@
 module Api
   module V1
     class DestinationsController < ApplicationController
+      before_action :authorize_access_request!, except: %i[index show]
       before_action :set_destination_id, only: %i[show edit update destroy]
 
       def index
         @destinations = Destination.all
+        render json: @destinations
+
+        # the `geocoded` scope filters only flats with coordinates (latitude & longitude)
+        @markers = @destinations.geocoded.map do |flat|
+          {
+            lat: flat.latitude,
+            lng: flat.longitude
+          }
+        end
+        render json: @markers
       end
 
-      def show; end
-
-      def new
-        @destination = Destination.new
+      def show
+        render json: destination
       end
 
       def create
         @destination = Destination.new(destination_params)
-        @destination.save
-        redirect_to destination_path(@destination)
+        if @destination.save
+          render json: @destination, status: :created, location: @destination
+        else
+          render json: @destination.errors, status: :unprocessable_entity
+        end
       end
 
       def update
-        @destination.update(destination_params)
-        redirect_to destination_path(@destination)
+        if @destination.update(destination_params)
+          render json: @destination
+        else
+          render json: @destination.errors, status: :unprocessable_entity
+        end
       end
 
       def destroy
@@ -34,7 +49,7 @@ module Api
       private
 
       def destination_params
-        params.require(:destination).permit(:name, :description, :address, :rate, :photo_url)
+        params.require(:destination).permit(:name, :description, :address, :rate, :photo_url, :user_id)
       end
 
       def set_destination_id
