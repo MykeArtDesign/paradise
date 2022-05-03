@@ -1,34 +1,29 @@
 <template>
-  <section>
-    <form action="">
-      <div>
-        <label for="name" id="name">Entrer un nouveau nom: </label>
-        <input
-          v-model="destination.name" type="text" id="name">
+  <section class="pt-100">
+    <div class="container">
+      <h2 class="mb-3"> Modifier une destination</h2>
+      <div class="mb-3 col-sm-4">
+        <label for="name" class="form-label">Entrer un nouveau nom</label>
+        <input type="text" v-model="destination.name" class="form-control" id="name" placeholder="Paris">
       </div>
-      <div>
-        <label for="address" id="adress">Modifier l'adresse</label>
-        <input
-          v-model="destination.address" type="text" id="address">
+      <div class="mb-3 col-sm-4">
+        <label for="address" class="form-label">Modifier l'adresse</label>
+        <input type="text" v-model="destination.address" class="form-control" id="address" placeholder="Paris, France">
       </div>
-      <div>
-        <label for="description" id="description">Modifier la description</label>
-        <input
-          v-model="destination.description" type="text" id="description">
+      <div class="mb-3 col-sm-4">
+        <label for="description" class="form-label">Modifier la description</label>
+        <textarea v-model="destination.description" class="form-control" id="description" rows="3"></textarea>
       </div>
-      <div>
-        <label for="rate" id="rate">Modifier la note (/5)</label>
-        <input
-          v-model="destination.rate" type="range" id="range">
+      <div class="mb-3 col-sm-4">
+        <label for="rate" class="form-label">Modifier la note (/5)</label>
+        <input type="number" v-model="destination.rate" class="form-control" id="rate" placeholder="5">
       </div>
-      <div>
-        <label for="image" id="image">Modifier la photo (url)</label>
-        <input
-          v-model="destination.photo_url" type="text" id="image">
+      <div class="mb-3 col-sm-4">
+        <label for="image" class="form-label">Modifier la photo (url)</label>
+        <input type="text" v-model="destination.photo_url" class="form-control" id="image">
       </div>
-
-      <button v-on:click="updateDestination" type="submit">Modifier</button>
-    </form>
+    <button v-on:click="updateDestination" class="btn btn-primary" type="submit">Modifier</button>
+    </div>
   </section>
 </template>
 

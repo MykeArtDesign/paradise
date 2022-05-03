@@ -1,70 +1,84 @@
 <template>
   <section class="pt-100">
-    <form action="" @summit.prevent="addNewDestination">
-      <div>
-        <label for="name" id="name">Nom de la destination</label>
-        <input
-          v-model="destination.name" type="text" id="name">
+    <div class="container">
+      <h2 class="mb-3"> Ajouter une destination</h2>
+      <div class="mb-3 col-sm-4">
+        <label for="name" class="form-label">Nom de la destination</label>
+        <input type="text" v-model="name" class="form-control" id="name" placeholder="Paris">
       </div>
-      <div>
-        <label for="address" id="adress">Adresse de la destination</label>
-        <input
-          v-model="destination.address" type="text" id="address">
+      <div class="mb-3 col-sm-4">
+        <label for="address" class="form-label">Adresse de la destination</label>
+        <input type="text" v-model="address" class="form-control" id="address" placeholder="Paris, France">
       </div>
-      <div>
-        <label for="description" id="description">Ajouter une description</label>
-        <input
-          placeholder="ajouter du texte..."
-          v-model="destination.description" type="text" id="description">
+      <div class="mb-3 col-sm-4">
+        <label for="description" class="form-label">Ajouter une description</label>
+        <textarea v-model="description" class="form-control" id="description" rows="3"></textarea>
       </div>
-      <div>
-        <label for="rate" id="rate">Ajouter une note (/5)</label>
-        <input
-          v-model="destination.rate" type="number" id="rate">
+      <div class="mb-3 col-sm-4">
+        <label for="rate" class="form-label">Ajouter une note (/5)</label>
+        <input type="number" v-model="rate" class="form-control" id="rate" placeholder="5">
       </div>
-      <div>
-        <label for="image" id="image">Ajouter une photo (url)</label>
-        <input
-          v-model="destination.photo_url" type="text" id="image">
+      <div class="mb-3 col-sm-4">
+        <label for="image" class="form-label">Ajouter une photo (url)</label>
+        <input type="text" v-model="photo_url" class="form-control" id="image">
       </div>
-
-      <button type="submit">Ajouter </button>
-    </form>
+    <button v-on:click="addNewDestination" type="submit" class="mt-3 btn btn-primary">Ajouter </button>
+    </div>
   </section>
 </template>
 
 <script>
 
-import { API } from '../backend/index';
+// import { API } from '../backend/index';
+import axios from 'axios';
 
 export default {
   name: 'AddDestination',
   data() {
     return {
-      newDestination: {
-        name: '',
-        address: '',
-        description: '',
-        rate: '',
-        photo_url: '',
-      },
+
+      name: '',
+      address: '',
+      description: '',
+      rate: '',
+      photo_url: '',
+      user_id: '',
+
     };
   },
   methods: {
 
-    addNewDestination() {
-      API.post('/api/v1/destinations/', {
-        destinations: {
-          name: this.newDestination.name,
-          address: this.newDestination.address,
-          description: this.newDestination.description,
-          rate: this.newDestination.rate,
-          photo_url: this.newDestination.photo_url,
-        },
-      })
-        .then((response) => {
-          this.destinations = response.data;
-        });
+  //   addNewDestination() {
+  //     API.post('/api/v1/destinations/', {
+  //       destinations: {
+  //         name: this.newDestination.name,
+  //         address: this.newDestination.address,
+  //         description: this.newDestination.description,
+  //         rate: this.newDestination.rate,
+  //         photo_url: this.newDestination.photo_url,
+  //       },
+  //     })
+  //       .then((response) => {
+  //         this.destinations = response.data;
+  //       });
+  //   },
+    async addNewDestination() {
+      try {
+        const destination = await axios.post(
+          'http://localhost:3000/api/v1/destinations',
+          {
+            name: this.name,
+            address: this.eaddress,
+            description: this.description,
+            rate: this.rate,
+            photo_url: this.photo_url,
+          },
+        );
+
+        console.log(destination);
+      } catch (e) {
+        console.log(e);
+      }
     },
 
   },

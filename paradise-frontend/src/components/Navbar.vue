@@ -4,14 +4,14 @@
     <div class="container">
       <nav>
         <div id="logo" class="nav-link">
-          <a href="/">DESTINATION</a>
+          <a href="/">PARADISE</a>
         </div>
 
         <div class="navigation-bar">
-          <button v-if="isLoggedIn" class="btn btn-danger" v-on:click="logout" >Se deconnecter</button>
+          <!-- <button v-if="isLoggedIn" class="btn btn-danger" v-on:click="logout" >Se deconnecter</button> -->
           <!-- <router-link to="/" @click.prevent="logout" v-if="!login()">Se deconnecter</router-link> -->
           <!-- <button v-else class="btn btn-primary" v-on:click="login" >Se connecter</button> -->
-          <button v-esle class="btn btn-primary" v-on:click="trylogin" >Se connecter</button>
+          <!-- <button v-esle class="btn btn-primary" v-on:click="trylogin" >Se connecter</button> -->
         </div>
       </nav>
     </div>

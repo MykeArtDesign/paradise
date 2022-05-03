@@ -4,7 +4,7 @@ import Home from '@/components/Home';
 import Destination from '@/components/Destination';
 import Signin from '@/components/Signin';
 import AddDestination from '@/components/AddDestination';
-
+import EditDestination from '@/components/EditDestination';
 
 Vue.use(Router);
 
@@ -21,6 +21,7 @@ export default new Router({
       name: 'Destination',
       component: Destination,
     },
+
     {
       path: '/signin',
       name: 'Signin',
@@ -28,9 +29,14 @@ export default new Router({
     },
 
     {
-      path: '/newdestination',
+      path: '/addNewDestination',
       name: 'AddDestination',
       component: AddDestination,
+    },
+    {
+      path: '/updateDestination',
+      name: 'EditDestination',
+      component: EditDestination,
     },
   ],
 });

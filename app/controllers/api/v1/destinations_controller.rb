@@ -25,6 +25,8 @@ module Api
       end
 
       def create
+        @user = current_user.id
+        @destination.user_id = @user
         @destination = Destination.new(destination_params)
         if @destination.save
           render json: @destination, status: :created, location: @destination

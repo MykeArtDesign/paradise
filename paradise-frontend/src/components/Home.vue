@@ -11,11 +11,13 @@
       <h2> Les destinations</h2>
         <div class="cards">
           <div :key="index" v-for="(destination, index) in destinations">
-            <div class="card-white">
-              <img :src="destination.photo_url" alt="image-destination">
-              <h3>{{destination.name}}</h3>
-              <p>{{destination.address}}</p>
-            </div>
+            <router-link :to="'/destinations/1'">
+              <div class="card-white">
+                <img :src="destination.photo_url" alt="image-destination">
+                <h3>{{destination.name}}</h3>
+                <p>{{destination.address}}</p>
+              </div>
+            </router-link>
           </div>
         </div>
     </div>
