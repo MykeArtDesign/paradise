@@ -4,10 +4,10 @@
     <div class="banner">
       <h1> Voyagez en un clique !</h1>
       <p>Parce que voyager, c’est partir à la découverte de l’autre, découvrez les plus belles destinations à visiter</p>
-      <a href="#contact" class="btn-flat"> Ajouter une destination</a>
+      <router-link to="/addNewDestination" class="btn btn-primary">Ajouter une destination</router-link>
     </div>
   <div class="destinations">
-    <div class="container pt-100">
+    <div class="container-global pt-100">
       <h2> Les destinations</h2>
         <div class="cards">
           <div :key="index" v-for="(destination, index) in destinations">
@@ -51,7 +51,7 @@ export default {
     background-image: url("https://images.unsplash.com/photo-1615051179134-62696ea77ef9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1752&q=80");
     background-position: center;
     background-size: cover;
-    padding: 150px 0px;
+    padding: 255px 0px;
     text-align: center;
   }
   section {
