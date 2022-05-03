@@ -1,0 +1,20 @@
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.card-white {
+  background-color: white;
+  border-radius: 5px;
+  padding: 22px;
+  box-shadow: var(--box-shadow);
+  margin: 10px;
+}
+
+
+.card-white img {
+  width: 100%;
+  border-radius: 5px;
+  object-fit: cover;
+  height: 180px;
+}

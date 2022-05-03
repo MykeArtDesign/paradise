@@ -26,6 +26,7 @@ export default new Router({
       name: 'Signin',
       component: Signin,
     },
+
     {
       path: '/newdestination',
       name: 'AddDestination',

@@ -1,18 +1,15 @@
 <template>
-  <div class="hello">
-    <section class="hero">
-      <div class="container pt-100">
-        <div class="banner">
-          <h1>Lorem, ipsum dolor.</h1>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-          <router-link to="/newdestination" class="btn btn-flat" >Ajouter une destination</router-link>
-        </div>
-      </div>
-    </section>
 
-    <section class="destinations pt-100">
-      <div class="container pt-100">
-          <div class="cards">
+  <section class="hero">
+    <div class="banner">
+      <h1> Voyagez en un clique !</h1>
+      <p>Parce que voyager, c’est partir à la découverte de l’autre, découvrez les plus belles destinations à visiter</p>
+      <a href="#contact" class="btn-flat"> Ajouter une destination</a>
+    </div>
+  <div class="destinations">
+    <div class="container pt-100">
+      <h2> Les destinations</h2>
+        <div class="cards">
           <div :key="index" v-for="(destination, index) in destinations">
             <div class="card-white">
               <img :src="destination.photo_url" alt="image-destination">
@@ -21,14 +18,16 @@
             </div>
           </div>
         </div>
-      </div>
-    </section>
+    </div>
   </div>
+  </section>
+
 </template>
 
 <script>
 
 import { API } from '../backend/index';
+
 
 export default {
   name: 'Home',
@@ -48,69 +47,32 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-  * {
-    margin: 0;
-    padding: 0;
-    font-family: 'Roboto', sans-serif;
-    line-height: 1.3;
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-    color: black;
+  .banner {
+    background-image: url("https://images.unsplash.com/photo-1615051179134-62696ea77ef9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1752&q=80");
+    background-position: center;
+    background-size: cover;
+    padding: 150px 0px;
+    text-align: center;
+  }
+  section {
+    height: 100vh;
+    padding-bottom: 100px;
   }
   .pt-100{
     padding-top: 100px;
     }
 
-  .container {
-    width: 100%;
-    max-width: 1140px;
-    margin: 0 auto;
-  }
-
   .banner h1 {
-    font-size: 32px;
+    color: var(--color-forth);
+    font-size: 45px;
     font-weight: 700;
   }
 
   .banner p {
-    font-size: 16px;
-    margin-bottom: 20px;
+    color:rgba(0, 51, 102, 0.6);
+    font-size: 24px;
+    width: 50%;
+    margin: 30px auto;
   }
 
-  a {
-    text-decoration: none;
-  }
-
-  .btn-flat {
-  color: white;
-  padding: 8px 24px;
-  background: rgb(60, 122, 229);
-  transition: all 0.3s ease;
-}
-
-  .btn-flat:hover {
-    background: rgb(46, 96, 182);
-    color: white;
-  }
-
-  .cards{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-
-  .card-white{
-  background-color: white;
-  border-radius: 5px;
-  padding: 22px;
-  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
-  margin: 10px;
-  }
-  .card-white img{
-    width: 100%;
-    border-radius: 5px;
-    object-fit: cover;
-    height: 180px;
-
-  }
 </style>
