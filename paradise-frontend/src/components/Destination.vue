@@ -26,10 +26,9 @@ export default {
   },
 
   mounted() {
-    API.get('/api/v1/destinations/1')
+    API.get(`/api/v1/destinations/${this.$route.params.id}`)
       .then((response) => {
         this.destination = response.data;
-        console.log(response.data);
       });
   },
 

@@ -11,7 +11,7 @@
       <h2> Les destinations</h2>
         <div class="cards">
           <div :key="index" v-for="(destination, index) in destinations">
-            <router-link :to="'/destinations/1'">
+            <router-link :to="`/destinations/${destination.id}`">
               <div class="card-white">
                 <img :src="destination.photo_url" alt="image-destination">
                 <h3>{{destination.name}}</h3>
