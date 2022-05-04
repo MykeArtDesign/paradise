@@ -2,10 +2,10 @@
     <section>
       <div id="destination-banner" :style="{backgroundImage:`url(${destination.photo_url})`}">
         <div class="container" >
-          <h1 class="mx-auto"> {{destination.name}}</h1>
-          <span class="badge bg-light rounded-pill"> ⭐️: {{ destination.rate}}</span>
+          <h3 class="text-center"><span class="badge bg-dark rounded-pill"> ⭐️ : {{ destination.rate}}</span></h3>
         </div>
       </div>
+      <h1 class="pt-4"> {{destination.name}}</h1>
       <div class="col-12 col-md-6 rounded-3 shadow-sm p-4 px-5 my-5">
         <article>
           <h2><span>Description</span></h2>
