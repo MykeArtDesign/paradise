@@ -1,24 +1,18 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+<h2> Destination Paradise </h2>
 
-Things you may want to cover:
+Paradise est un site internet qui permet de parcourir différents lieux à visiter.
+Il est possible de consulter les informations sur le lieu de son choix mais aussi d'en ajouter de nouveaux. 
 
-* Ruby version
+<h2> Work in progress </h2> 
 
-* System dependencies
+Du au temps imparti, ce projet évoluera par la suite avec de nouvelles fonctionnalités
 
-* Configuration
+<h2> Configuration </h2> 
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+  <ul>
+  <li> Rails API : Pour le backend</li>
+  <li> VueJs : Pour le frontend </li>
+  <li> Axios : Pour communiquer avec l'API en utilisant des requêtes.</li>
+  <li> JWTSession : Pour créer des tokens à l'identification</li>
+  </ul>
