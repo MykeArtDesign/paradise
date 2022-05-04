@@ -3,7 +3,7 @@
 module Api
   module V1
     class DestinationsController < ApplicationController
-      before_action :authorize_access_request!, except: %i[index show]
+      before_action :authorize_access_request!, except: %i[index show destroy]
       before_action :set_destination_id, only: %i[show edit update destroy]
 
       def index
@@ -25,8 +25,7 @@ module Api
       end
 
       def create
-        @user = current_user.id
-        @destination.user_id = @user
+        @destination.user_id = current_user
         @destination = Destination.new(destination_params)
         if @destination.save
           render json: @destination, status: :created, location: @destination
@@ -45,7 +44,6 @@ module Api
 
       def destroy
         @destination.destroy
-        redirect_to destinations_path
       end
 
       private

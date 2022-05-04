@@ -8,8 +8,8 @@ class SigninController < ApplicationController
 
     if user.authenticate(params[:password])
       payload = { user_id: user.id }
-      session = JWTSessions::Session.new(payload: payload)
-      render json: session.login, status: :created
+      session = JWTSessions::Session.new(payload: payload, refresh_by_access_allowed: true)
+      render json: { session: session.login, user: user }, status: :created
     else
       not_authorized
     end

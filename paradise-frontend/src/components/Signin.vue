@@ -1,7 +1,7 @@
 <template>
   <section class="sign in pt-100">
     <div class="container">
-      <h3 class="mb-3">Sign In</h3>
+      <h3 class="mb-3">Se connecter</h3>
       <div class="mb-3">
         <label for="email" class="form-label">E-mail</label>
         <input type="text" v-model="input.email" class="form-control" id="email" placeholder="john.doe@gmail.com">
@@ -9,7 +9,7 @@
       <div class="mb-3">
         <label for="password" class="form-label">Mot de passe</label>
         <input type="password" v-model="input.password" class="form-control" id="password" placeholder="******">
-        <button v-on:click="login" class="mt-3 btn btn-primary" type="submit">Sign In</button>
+        <button v-on:click="login" class="mt-3 btn btn-primary" type="submit">Me connecter</button>
       </div>
     </div>
   </section>
@@ -37,8 +37,8 @@ export default {
           password: this.input.password,
         })
           .then((response) => {
-            setSession(response.data.access);
-            this.$router.replace('/');
+            setSession(response.data.session.access, response.data.user.id);
+            this.$router.push('/');
           })
           .catch(error => console.log(error));
       }
@@ -47,9 +47,3 @@ export default {
   },
 };
 </script >
-
-<style scoped>
- .pt-100 {
-   padding-top: 100px;
- }
-</style>
