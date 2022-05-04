@@ -8,15 +8,13 @@
       </div>
           <p>{{destination.description}}</p>
       </div>
-
+      <router-link to="/updateDestination" class="btn btn-warning">Modifier</router-link>
       <button @click="deleteDestination(destination.id)" class="btn btn-danger">Supprimer</button>
-
     </section>
 </template>
 
 <script>
 import { API } from '../backend/index';
-// import axios from 'axios';
 
 export default {
   name: 'Destination',

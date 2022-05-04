@@ -4,11 +4,11 @@
       <h3 class="mb-3">Se connecter</h3>
       <div class="mb-3">
         <label for="email" class="form-label">E-mail</label>
-        <input type="text" v-model="input.email" class="form-control" id="email" placeholder="john.doe@gmail.com">
+        <input type="text" v-model="input.email" class="form-control" id="email" placeholder="Entrer un email">
       </div>
       <div class="mb-3">
         <label for="password" class="form-label">Mot de passe</label>
-        <input type="password" v-model="input.password" class="form-control" id="password" placeholder="******">
+        <input type="password" v-model="input.password" class="form-control" id="password" placeholder="Entrer un mot de passe">
         <button v-on:click="login" class="mt-3 btn btn-primary" type="submit">Me connecter</button>
       </div>
     </div>

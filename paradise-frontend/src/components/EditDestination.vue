@@ -16,13 +16,13 @@
       </div>
       <div class="mb-3 col-sm-4">
         <label for="rate" class="form-label">Modifier la note (/5)</label>
-        <input type="number" v-model="destination.rate" class="form-control" id="rate" placeholder="5">
+        <input type="number" v-model.number="destination.rate" class="form-control" id="rate" placeholder="5">
       </div>
       <div class="mb-3 col-sm-4">
         <label for="image" class="form-label">Modifier la photo (url)</label>
         <input type="text" v-model="destination.photo_url" class="form-control" id="image">
       </div>
-    <button v-on:click="updateDestination" class="btn btn-primary" type="submit">Modifier</button>
+    <button v-on:click="updateDestination(destination.id)" class="btn btn-primary" type="submit">Modifier</button>
     </div>
   </section>
 </template>
@@ -47,11 +47,11 @@ export default {
     updateDestination(destination) {
       API.patch(`/api/v1/destinations/${destination.id}`, {
         destination: {
-          name: this.newDestination.name,
-          address: this.newDestination.address,
-          description: this.newDestination.description,
-          rate: this.newDestination.rate,
-          photo_url: this.newDestination.photo_url,
+          name: this.destination.name,
+          address: this.destination.address,
+          description: this.destination.description,
+          rate: this.destination.rate,
+          photo_url: this.destination.photo_url,
         },
       })
         .catch(error => this.console.log(error));

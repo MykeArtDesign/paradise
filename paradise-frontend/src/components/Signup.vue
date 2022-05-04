@@ -4,15 +4,15 @@
       <h3 class="mb-3">Créer un compte</h3>
       <div class="mb-3">
         <label for="email" class="form-label">E-mail</label>
-        <input type="text" v-model="email" class="form-control" id="email" placeholder="john.doe@gmail.com">
+        <input type="text" v-model="input.email" class="form-control" id="email" placeholder="Entrer un email">
       </div>
       <div class="mb-3">
         <label for="password" class="form-label">Mot de passe</label>
-        <input type="password" v-model="password" class="form-control" id="password" placeholder="******">
+        <input type="password" v-model="input.password" class="form-control" id="password" placeholder="Entrer un mot de passe">
       </div>
       <div class="mb-3">
         <label for="password_confirmation" class="form-label">Mot de passe</label>
-        <input type="password" v-model="password_confirmation" class="form-control" id="password-confirmation" placeholder="Confirmez votre mot de passe">
+        <input type="password" v-model="input.password_confirmation" class="form-control" id="password-confirmation" placeholder="Confirmez votre mot de passe">
         <button v-on:click="Signup" class="mt-3 btn btn-primary" type="submit">Valider</button>
       </div>
     </div>
@@ -26,18 +26,20 @@ export default {
   name: 'Destination',
   data() {
     return {
-      email: '',
-      password: '',
-      password_confirmation: '',
+      input: {
+        email: '',
+        password: '',
+        password_confirmation: '',
+      },
     };
   },
   methods: {
     Signup() {
-      if (this.email !== '' && this.password !== '' && this.password_confirmation) {
+      if (this.email !== '' && this.password !== '' && this.password_confirmation !== '') {
         API.post('/users', {
-          email: this.email,
-          password: this.password,
-          password_confirmation: this.password_confirmation,
+          email: this.input.email,
+          password: this.input.password,
+          password_confirmation: this.input.password_confirmation,
         })
 
           .then((response) => {
