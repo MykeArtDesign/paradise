@@ -6,7 +6,7 @@
         </div>
       </div>
       <h1 class="pt-4"> {{destination.name}}</h1>
-      <div class="col-12 col-md-6 rounded-3 shadow-sm p-4 px-5 my-5">
+      <div class="col-12 col-md-6 rounded-3 shadow-sm p-4 px-5 m-5 ">
         <article>
           <h2><span>Description</span></h2>
           <p class="small">{{destination.address}}</p>
@@ -14,7 +14,7 @@
         </article>
       </div>
       <div class="d-grid gap-2 d-md-block pb-3">
-        <router-link :to="`/editDestinations/${destination.id}`" class="btn btn-outline-danger">Modifier</router-link>
+        <router-link :to="{name: 'EditDestination', params: {id: destination.id} }" class="ms-5 btn btn-outline-danger">Modifier</router-link>
         <button @click="deleteDestination(destination.id)" class="btn btn-danger">Supprimer</button>
       </div>
     </section>

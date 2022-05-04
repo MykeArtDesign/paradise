@@ -1,6 +1,6 @@
 <template>
-  <section class="pt-100">
-    <div class="container">
+  <section>
+    <div class="container pt-4">
       <div class="alert alert-primary" role="alert" v-if="error !== ''">
           {{error}}
       </div>
@@ -25,7 +25,7 @@
         <label for="image" class="form-label">Modifier la photo (url)</label>
         <input type="text" v-model="destination.photo_url" class="form-control" id="image">
       </div>
-    <button v-on:click="updateDestination(destination.id)" class="btn btn-primary" type="submit">Modifier</button>
+    <button v-on:click="updateDestination(id)" class="btn btn-primary disabled" type="submit">Modifier</button>
     </div>
   </section>
 </template>
@@ -51,8 +51,8 @@ export default {
     setError(error, text) {
       this.error = (error.response && error.response.data && error.response.data.error) || text;
     },
-    updateDestination(destination) {
-      API.put(`/api/v1/destinations/${destination.id}`, {
+    updateDestination(id) {
+      API.put(`/api/v1/destinations/${id}`, {
         destination: {
           name: this.destination.name,
           address: this.destination.address,
@@ -62,7 +62,7 @@ export default {
         },
       })
         .then(() => {
-          this.$router.push(`/destination/${destination.id}`);
+          this.$router.push(`/destination/${this.$route.params.id}`);
         })
         .catch((error) => {
           this.setError(error, 'Cannot edit destination');
