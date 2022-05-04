@@ -5,6 +5,8 @@ import Destination from '@/components/Destination';
 import Signin from '@/components/Signin';
 import AddDestination from '@/components/AddDestination';
 import EditDestination from '@/components/EditDestination';
+import Signup from '@/components/Signup';
+
 
 Vue.use(Router);
 
@@ -26,6 +28,12 @@ export default new Router({
       path: '/signin',
       name: 'Signin',
       component: Signin,
+    },
+
+    {
+      path: '/signup',
+      name: 'Signup',
+      component: Signup,
     },
 
     {

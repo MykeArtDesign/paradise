@@ -10,10 +10,11 @@ export const API = axios.create({
 });
 
 
-export function setSession(token) {
-  if (token) {
+export function setSession(token, user) {
+  if (token && user) {
     localStorage.setItem('jwt_access_token', token);
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+    localStorage.setItem('user', JSON.stringify(user));
   } else {
     localStorage.removeItem('jwt_access_token');
     delete axios.defaults.headers.common.Authorization;

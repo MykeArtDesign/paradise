@@ -1,14 +1,15 @@
 <template>
-    <section class="destinations pt-100">
-          <h1>en attente de résultat</h1>
+    <section class="destinations">
       <div class="container pt-100">
-        <div class="banner">
-          <img :src="destination.photo_url" alt="image-destination">
-        </div>
-          <h1>{{destination.name}}</h1>
+      <div class="banner">
+        <img :src="destination.photo_url" alt="image-destination">
+        <h1> {{destination.name}}</h1>
           <h3>{{destination.address}}</h3>
+      </div>
           <p>{{destination.description}}</p>
       </div>
+
+      <button @click="deleteDestination(destination.id)" class="btn btn-danger">Supprimer</button>
 
     </section>
 </template>
@@ -31,28 +32,11 @@ export default {
         this.destination = response.data;
       });
   },
-
-  // created() {
-  //   getUser(item) {
-  //     axios.get(`https://localhost:3000/api/v1/destinations/${item.id}`)
-  //     .then((response) => {
-  //       this.destination = response.data;
-  //       })
-  //     .catch(error => {
-  //       console.log(error);
-  //       })
-  //   }
-  // },
-  // const ID = Number(this.$route.params.id);
-  // const destinationId = this.destinations.find(destination => destination.id === ID);
-  // this.destination = destinationId;
-  // console.log(destinationId);
-  // mounted() {
-  // API.get('/destinations/1')
-  //   .then((response) => {
-  //     this.destination = response.data;
-  //   });
-  // },
-
+  methods: {
+    deleteDestination(id) {
+      API.delete(`/api/v1/destinations/${id}`);
+      window.location.replace('http://localhost:8080/');
+    },
+  },
 };
 </script>

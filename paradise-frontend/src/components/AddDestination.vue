@@ -16,12 +16,13 @@
       </div>
       <div class="mb-3 col-sm-4">
         <label for="rate" class="form-label">Ajouter une note (/5)</label>
-        <input type="number" v-model="rate" class="form-control" id="rate" placeholder="5">
+        <input type="number" v-model.number="rate" class="form-control" id="rate" placeholder="5">
       </div>
       <div class="mb-3 col-sm-4">
         <label for="image" class="form-label">Ajouter une photo (url)</label>
         <input type="text" v-model="photo_url" class="form-control" id="image">
       </div>
+      <input type="hidden" v-model="user_id">
     <button v-on:click="addNewDestination" type="submit" class="mt-3 btn btn-primary">Ajouter </button>
     </div>
   </section>
@@ -36,13 +37,12 @@ export default {
   name: 'AddDestination',
   data() {
     return {
-
       name: '',
       address: '',
       description: '',
       rate: '',
       photo_url: '',
-      user_id: '',
+      user_id: window.localStorage.getItem('user'),
 
     };
   },
@@ -72,6 +72,7 @@ export default {
             description: this.description,
             rate: this.rate,
             photo_url: this.photo_url,
+            user_id: this.user_id,
           },
         );
 
