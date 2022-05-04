@@ -3,7 +3,7 @@
 module Api
   module V1
     class DestinationsController < ApplicationController
-      before_action :authorize_access_request!, except: %i[index show destroy]
+      before_action :authorize_access_request!, only: :create
       before_action :set_destination_id, only: %i[show edit update destroy]
 
       def index

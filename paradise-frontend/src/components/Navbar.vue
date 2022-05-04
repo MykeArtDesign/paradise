@@ -8,14 +8,8 @@
         </div>
 
         <div class="navigation-bar">
-          <!-- <button v-if="isLoggedIn" class="btn btn-danger" v-on:click="logout" >Se deconnecter</button> -->
-          <!-- <router-link to="/" @click.prevent="logout" v-if="!login()">Se deconnecter</router-link> -->
-          <!-- <button v-else class="btn btn-primary" v-on:click="login" >Se connecter</button> -->
-          <!-- <router-link to="/signup" @click.prevent="logout" v-if="!login()">Créer un compte</router-link>
-          <button class="btn btn-primary" v-on:click="trylogin" >Se connecter</button>
-          <button v-if="!isLoggedIn" class="btn btn-primary" v-on:click="trylogin" >Se connecter</button> -->
-        <router-link to="/signin" class="btn btn-link" v-if="!signin()" >Sign in</router-link>
-        <router-link to="/signup" class="btn btn-link" v-if="!signin()">Sign Up</router-link>
+        <router-link to="/signin" class="btn btn-outline-primary" v-if="!signin()" >Sign in</router-link>
+        <router-link to="/signup" class="btn btn-primary" v-if="!signin()">Sign Up</router-link>
         <a href="/" @click.prevent="signOut" class="btn btn-link" v-if="signin()">Sign out</a>
         </div>
       </nav>
@@ -45,3 +39,13 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+ #logo a {
+   color: var(--color-second);
+   font-size: var(--text-medium);
+   font-weight: var(--font-weight-regular);
+   letter-spacing: 2px;
+
+ }
+</style>

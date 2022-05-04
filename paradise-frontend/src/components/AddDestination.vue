@@ -1,6 +1,9 @@
 <template>
-  <section class="pt-100">
+  <section>
     <div class="container">
+      <div class="alert alert-primary" role="alert" v-if="error !== ''">
+        {{error}}
+      </div>
       <h2 class="mb-3"> Ajouter une destination</h2>
       <div class="mb-3 col-sm-4">
         <label for="name" class="form-label">Nom de la destination</label>
@@ -37,6 +40,7 @@ export default {
   name: 'AddDestination',
   data() {
     return {
+      error: '',
       destination: {
         name: '',
         address: '',
@@ -48,6 +52,9 @@ export default {
     };
   },
   methods: {
+    setError(error, text) {
+      this.error = (error.response && error.response.data && error.response.data.error) || text;
+    },
     addNewDestination() {
       axios.post('http://localhost:3000/api/v1/destinations',
         {
@@ -61,15 +68,11 @@ export default {
         .then(() => {
           this.$router.push('/');
         })
-        .catch(error => console.log(error));
+        .catch((error) => {
+          this.setError(error, 'Cannot create destination');
+        });
     },
 
   },
 };
 </script>
-
-<style scoped>
-  .pt-100 {
-    padding-top: 100px;
-  }
-</style>

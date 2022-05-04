@@ -42,7 +42,7 @@ export default new Router({
       component: AddDestination,
     },
     {
-      path: '/updateDestination',
+      path: '/editDestination/:id',
       name: 'EditDestination',
       component: EditDestination,
     },

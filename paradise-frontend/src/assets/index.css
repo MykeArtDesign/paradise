@@ -1,6 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-
-@import './components-scss/buttons.css';
 @import './components-scss/cards.css';
 @import './components-scss/navbar.css';
 
@@ -13,7 +11,6 @@
   box-sizing: border-box;
   overflow-x: hidden;
   scroll-behavior: smooth;
-  color: var(--color-second);
 }
 
 :root {
@@ -54,15 +51,19 @@ h2 {
   font-size: var(--text-medium);
   font-weight: var(--font-weight-bold);
   padding-bottom: 20px;
-
+  color: var(--color-second);
 }
 
 p {
   font-size: var(--text-regular);
   font-weight: var(--font-weight-regular);
+  color: var(--color-second);
 }
 a {
   text-decoration: none;
+}
+span {
+  color: var(--color-second);
 }
 
 ul {
@@ -74,6 +75,11 @@ input:focus {
   outline: none;
 }
 
-.pt-100 {
+.p-top {
   padding-top: 100px;
+}
+
+section {
+  height: 100vh;
+  padding-top: 80px;
 }

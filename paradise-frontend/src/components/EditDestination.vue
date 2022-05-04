@@ -1,6 +1,9 @@
 <template>
   <section class="pt-100">
     <div class="container">
+      <div class="alert alert-primary" role="alert" v-if="error !== ''">
+          {{error}}
+      </div>
       <h2 class="mb-3"> Modifier une destination</h2>
       <div class="mb-3 col-sm-4">
         <label for="name" class="form-label">Entrer un nouveau nom</label>
@@ -34,6 +37,7 @@ export default {
   name: 'EditDestination',
   data() {
     return {
+      error: '',
       destination: {
         name: '',
         address: '',
@@ -44,8 +48,11 @@ export default {
     };
   },
   methods: {
+    setError(error, text) {
+      this.error = (error.response && error.response.data && error.response.data.error) || text;
+    },
     updateDestination(destination) {
-      API.patch(`/api/v1/destinations/${destination.id}`, {
+      API.put(`/api/v1/destinations/${destination.id}`, {
         destination: {
           name: this.destination.name,
           address: this.destination.address,
@@ -54,7 +61,12 @@ export default {
           photo_url: this.destination.photo_url,
         },
       })
-        .catch(error => this.console.log(error));
+        .then(() => {
+          this.$router.push(`/destination/${destination.id}`);
+        })
+        .catch((error) => {
+          this.setError(error, 'Cannot edit destination');
+        });
     },
   },
 };

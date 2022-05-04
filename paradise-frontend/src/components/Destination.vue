@@ -1,15 +1,22 @@
 <template>
-    <section class="destinations">
-      <div class="container pt-100">
-      <div class="banner">
-        <img :src="destination.photo_url" alt="image-destination">
-        <h1> {{destination.name}}</h1>
-          <h3>{{destination.address}}</h3>
+    <section>
+      <div id="destination-banner" :style="{backgroundImage:`url(${destination.photo_url})`}">
+        <div class="container" >
+          <h1 class="mx-auto"> {{destination.name}}</h1>
+          <span class="badge bg-light rounded-pill"> ⭐️: {{ destination.rate}}</span>
+        </div>
       </div>
-          <p>{{destination.description}}</p>
+      <div class="col-12 col-md-6 rounded-3 shadow-sm p-4 px-5 my-5">
+        <article>
+          <h2><span>Description</span></h2>
+          <p class="small">{{destination.address}}</p>
+          <p> {{destination.description}}</p>
+        </article>
       </div>
-      <router-link to="/updateDestination" class="btn btn-warning">Modifier</router-link>
-      <button @click="deleteDestination(destination.id)" class="btn btn-danger">Supprimer</button>
+      <div class="d-grid gap-2 d-md-block pb-3">
+        <router-link :to="`/editDestinations/${destination.id}`" class="btn btn-outline-danger">Modifier</router-link>
+        <button @click="deleteDestination(destination.id)" class="btn btn-danger">Supprimer</button>
+      </div>
     </section>
 </template>
 
@@ -38,3 +45,11 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+  #destination-banner {
+    background-position: center;
+    background-size: cover;
+    padding: 255px 0px;
+  }
+</style>
