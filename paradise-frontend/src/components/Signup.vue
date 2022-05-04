@@ -19,7 +19,7 @@
   </section>
 </template>
 <script>
-import { API, setSession } from '../backend/index';
+import { API } from '../backend/index';
 
 export default {
 
@@ -42,10 +42,8 @@ export default {
           password_confirmation: this.input.password_confirmation,
         })
 
-          .then((response) => {
-            setSession(response.data.access);
-            localStorage.signin = true;
-            window.location.replace('http://localhost:8080/');
+          .then(() => {
+            this.$router.push('/signin');
           })
           .catch(error => console.log(error));
       }

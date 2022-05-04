@@ -1,13 +1,11 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
+  wrap_parameters :user, include: %i[email password password_confirmation]
 
   def create
     @user = User.new(user_params)
-
-    if @user.save
-      session = JWTSessions::Session.new(payload: payload, refresh_by_access_allowed: true)
-      render json: session.login
+    if @user.save!
     else
       render json: { error: @user.errors.full_messages.join(' ') }, status: :unprocessable_entity
     end

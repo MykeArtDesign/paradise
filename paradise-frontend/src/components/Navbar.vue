@@ -14,9 +14,9 @@
           <!-- <router-link to="/signup" @click.prevent="logout" v-if="!login()">Créer un compte</router-link>
           <button class="btn btn-primary" v-on:click="trylogin" >Se connecter</button>
           <button v-if="!isLoggedIn" class="btn btn-primary" v-on:click="trylogin" >Se connecter</button> -->
-        <router-link to="/signin" class="btn btn-primary" v-if="!signin()" >Sign in</router-link>
-        <router-link to="/signup" class="btn btn-primary" v-if="!signin()">Sign Up</router-link>
-        <a href="/" @click.prevent="signOut" class="btn btn-danger" v-if="signin()">Sign out</a>
+        <router-link to="/signin" class="btn btn-link" v-if="!signin()" >Sign in</router-link>
+        <router-link to="/signup" class="btn btn-link" v-if="!signin()">Sign Up</router-link>
+        <a href="/" @click.prevent="signOut" class="btn btn-link" v-if="signin()">Sign out</a>
         </div>
       </nav>
     </div>
@@ -25,7 +25,6 @@
 </template>
 
 <script>
-// import { API } from '../backend/index';
 
 export default {
   name: 'Navbar',
@@ -35,11 +34,12 @@ export default {
 
   methods: {
     signin() {
-      return window.localStorage.getItem('jwt_access_token');
+      return localStorage.signin;
     },
     signOut() {
       delete localStorage.removeItem.signin;
       window.localStorage.removeItem('jwt_access_token');
+      window.localStorage.removeItem('user');
       window.location.replace('http://localhost:8080/');
     },
   },

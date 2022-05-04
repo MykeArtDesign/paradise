@@ -48,22 +48,20 @@ export default {
     };
   },
   methods: {
-    async addNewDestination() {
-      try {
-        await axios.post(
-          'http://localhost:3000/api/v1/destinations',
-          {
-            name: this.destination.name,
-            address: this.destination.address,
-            description: this.destination.description,
-            rate: this.destination.rate,
-            photo_url: this.destination.photo_url,
-            user_id: this.destination.user_id,
-          },
-        );
-      } catch (e) {
-        console.log(e);
-      }
+    addNewDestination() {
+      axios.post('http://localhost:3000/api/v1/destinations',
+        {
+          name: this.destination.name,
+          address: this.destination.address,
+          description: this.destination.description,
+          rate: this.destination.rate,
+          photo_url: this.destination.photo_url,
+          user_id: this.destination.user_id,
+        })
+        .then(() => {
+          this.$router.push('/');
+        })
+        .catch(error => console.log(error));
     },
 
   },
